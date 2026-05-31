@@ -1,0 +1,64 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__project-filesystem__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/project_validate.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/security_check.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Is this bash command safe to run in a production environment? Consider: does it modify system files, delete data, or access sensitive credentials?"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/log_prompts.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import datetime; open('activity.log','a').write('File written: ' + datetime.datetime.now().isoformat() + '\\n'); print('Logged file operation')\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl -s -X POST https://my-claude-bootcamp-test.free.beeceptor.com"
+          }
+        ]
+      }
+    ]
+  }
+}
