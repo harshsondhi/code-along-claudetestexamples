@@ -65,3 +65,10 @@ event: Tells your script exactly where you are in the application lifecycle (e.g
 
 Add a console log stating 'hello world' to index.js"
 Add a console log to .claude/hooks/test-hook1.js saying hello"
+
+
+⏺ All done. Here's your new repo:
+
+  - Repo URL: https://github.com/harshsondhi/code-along-claudetestexamples
+  - Branch: main
+  - Visibility: Public

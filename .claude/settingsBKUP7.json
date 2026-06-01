@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "PreCompact": [
+      {
+        "matchers": [
+          {
+            "type": "reason",
+            "pattern": "manual"
+          }
+        ],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '📦 Manual compaction requested. Saving transcript backup...'"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/backup-transcript.py --reason manual",
+            "async": true
+          }
+        ]
+      },
+      {
+        "matchers": [
+          {
+            "type": "reason",
+            "pattern": "auto"
+          }
+        ],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/backup-transcript.py --reason auto",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

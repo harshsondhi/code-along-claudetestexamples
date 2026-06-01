@@ -25,4 +25,4 @@ dist-ssr
 secret_key*.txt
 prompt_history.txt
 temp/
-.claude/
+

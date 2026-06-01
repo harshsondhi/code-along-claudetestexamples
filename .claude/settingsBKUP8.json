@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if all tasks are complete: $ARGUMENTS. Return {\"ok\": false, \"reason\": \"...\"} if work remains.",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

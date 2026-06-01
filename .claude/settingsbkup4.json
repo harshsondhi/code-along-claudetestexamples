@@ -1,0 +1,15 @@
+{
+    "hooks": {
+        "SessionStart":[
+            {
+                "hooks": [
+
+                    {
+                        "type": "command",
+                        "command": "echo '## Git Status' && git status --short && echo '## TODOs' && grep -r 'TODO:' src/ 2>/dev/null | head -5; if [ -n \"$CLAUDE_ENV_FILE\" ]; then echo 'export NODE_ENV=production' >> \"$CLAUDE_ENV_FILE\"; echo 'export API_KEY=your-key' >> \"$CLAUDE_ENV_FILE\"; fi"
+                }
+                ]
+            }
+        ]
+    }
+}
